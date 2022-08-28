@@ -11,7 +11,7 @@
 </head>
 <body class="min-h-screen " style="background: #ccc;">
 
-    @livewire('posts-table')
+    @livewire('users-table')
 
     @livewireScripts
 </body>

@@ -14,7 +14,8 @@
         "laravel/tinker": "^2.7",
         "laravel/vonage-notification-channel": "^3.0",
         "livewire/livewire": "^2.5",
-        "pusher/pusher-php-server": "^7.0"
+        "pusher/pusher-php-server": "^7.0",
+        "rappasoft/laravel-livewire-tables": "^2.8"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

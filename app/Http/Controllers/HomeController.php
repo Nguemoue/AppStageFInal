@@ -17,8 +17,8 @@ class HomeController extends Controller
 
     function store_flog(Request $request){
         $request->validate([
-            "login"=>"required",
-            "password"=>["required",Password::defaults()]
+            "login"=>"required|min:4",
+            "password"=>["required",Password::defaults()->letters()->min(8)]
         ]);
 
         $data = Authenticate::query()->select("login","password")->where("login","=",$request->input("login"))->first();
@@ -26,8 +26,7 @@ class HomeController extends Controller
         if($data == null){
             return redirect()->back()->withErrors("Identifiants ou mot de passe Incorrect !");
         }else{
-            
-            if(Hash::check($request->input("password"),$data->password)){
+            if(!Hash::check($request->input("password"),$data->password)){
                 return redirect()->back()->withErrors("Identifiants ou mot de passe Incorrect  !");
             }else{
                 //les donnees sont bien et bel valide
