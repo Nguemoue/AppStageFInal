@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('publications', function (Blueprint $table) {
             $table->id();
+            $table->string("intitule");
+            $table->text("contenu");
+            $table->foreignId("unite_id");
+            $table->date("date_publication")->nullable(true);
             $table->timestamps();
         });
     }

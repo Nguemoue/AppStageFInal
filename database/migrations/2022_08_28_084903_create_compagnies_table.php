@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('compagnies', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("unite_id")->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
         });
     }

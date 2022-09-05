@@ -42,3 +42,9 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get("lucas",function(){
+    return response()->file(resource_path("views/index.html"));
+});
+
+Route::post("search/{q?}",[HomeController::class,"search"])->name("search");

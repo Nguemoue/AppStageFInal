@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('unites', function (Blueprint $table) {
             $table->id();
+            $table->string("nom");
+            $table->string("contact");
+            $table->string("code");
+            $table->string("longitude");
+            $table->string("latitude");
+            $table->foreignId("ville_id")->nullable(true)->constrained()->nullOnDelete()->cascadeOnUpdate();
+            
             $table->timestamps();
         });
     }

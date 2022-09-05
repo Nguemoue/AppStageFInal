@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("element_id")->nullable()->constrained()->nullOnDelete();
+            $table->text("message");
             $table->timestamps();
         });
     }

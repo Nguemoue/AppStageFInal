@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('materiels', function (Blueprint $table) {
             $table->id();
+            $table->string("etat");
+            $table->bigInteger("quantite");
+            $table->foreignId("unite_id")->nullable()->constrained()->cascadeOnDelete();
+            $table->string("designation");
             $table->timestamps();
         });
     }

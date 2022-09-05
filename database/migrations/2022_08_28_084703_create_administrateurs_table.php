@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('administrateurs', function (Blueprint $table) {
             $table->id();
+            $table->string("nom");
+            $table->string("telephone");
+            $table->string("matricule");
+            $table->string("login");
+            $table->string("password");
+            $table->foreignId("unite_id")->nullable()->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

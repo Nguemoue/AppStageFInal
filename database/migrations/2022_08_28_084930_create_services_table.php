@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
+            $table->string("nom");
+            $table->text("consignes");
+            $table->text("compte_rendu");
             $table->timestamps();
         });
     }

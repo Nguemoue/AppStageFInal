@@ -15,6 +15,15 @@ return new class extends Migration
     {
         Schema::create('personnels', function (Blueprint $table) {
             $table->id();
+            $table->string("nom");
+            $table->date("date_incorporation");
+            $table->string("login")->unique();
+            $table->string("password");
+            $table->string("telephone");
+            $table->string("adresse");
+            $table->enum("sexe",["Homme","Femme"])->default("Homme");
+            $table->float("taille");
+            $table->foreignId("position_personnel")->nullable()->constrained()->nullOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }
