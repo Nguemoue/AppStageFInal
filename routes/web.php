@@ -19,19 +19,14 @@ use App\Models\User;
  */
 
 Route::get("/flog", [HomeController::class, "first_login"])->name("first.login");
+
 Route::post("/flog",[HomeController::class,"store_flog"])->name("post.first.login");
 
 Route::get('/', function () {
     return view("index");
 })->name("home");
 
-
-Route::get("/te", function () {
-    Mail::to("lucchuala@gmail.com")->send(new testMail);
-    dd("de");
-});
-
-Route::view("test", "test")->name("test");
+Route::get("/home",[HomeController::class,"home"])->name("index");
 
 Route::middleware([
     'auth:sanctum',
@@ -43,8 +38,4 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get("lucas",function(){
-    return response()->file(resource_path("views/index.html"));
-});
-
-Route::post("search/{q?}",[HomeController::class,"search"])->name("search");
+Route::post("search/{filter?}",[HomeController::class,"search"])->name("search");

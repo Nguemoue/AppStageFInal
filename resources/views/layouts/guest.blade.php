@@ -25,9 +25,10 @@
             background-repeat:no-repeat;
             background-origin: content-box;
             background-position: center center; 
-            background-image: url({{ asset('assets/bg1.jpg') }});
+            background-image: url({{ asset('assets/camouflage.jpg') }});
             /* background: linear-gradient(360deg,#b1b4b3,#444,#999); */
             background-repeat: no-repeat;
+            background-color:rgba(100, 100, 100, .9); 
             min-height: 100vh;
         }
         .form-control:focus,.btn:focus{

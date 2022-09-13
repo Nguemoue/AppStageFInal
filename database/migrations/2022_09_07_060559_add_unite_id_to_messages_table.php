@@ -13,12 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('villes', function (Blueprint $table) {
-            $table->id();
-            $table->string("libelle");
-            $table->string("code")->nullable();
-            $table->text("description")->nullable();
-            $table->timestamps();
+        Schema::table('messages', function (Blueprint $table) {
+            $table->foreignId("unite_id")->nullable()->constrained()->nullOnDelete();
         });
     }
 
@@ -29,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('villes');
+        Schema::table('messages', function (Blueprint $table) {
+            $table->dropConstrainedForeignId("unite_id");
+        });
     }
 };

@@ -13,16 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('personnels', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
-            $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
+            $table->string("nom");
+            $table->date("date_incorporation");
+            $table->string("login")->unique();
+            $table->string("telephone");
+            $table->string("adresse");
+            $table->enum("sexe", ["Homme", "Femme"])->default("Homme");
+            $table->float("taille")->nullable();
+            $table->foreignId("position_personnel")->nullable()->constrained()->nullOnDelete()->cascadeOnUpdate();
             $table->timestamps();
+            $table->rememberToken();
         });
     }
 
@@ -33,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('personnels');
     }
 };

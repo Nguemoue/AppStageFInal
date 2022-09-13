@@ -11,7 +11,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Bus\Queueable;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable 
 {
     use HasApiTokens;
     use HasFactory;
@@ -24,9 +24,9 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var string[]
      */
-    protected $fillable = [
-        'name',
-        'email',
+    protected $table="personnels";
+     protected $fillable = [
+        'nom',
         'password',
     ];
 
@@ -49,6 +49,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        // 'date_incorporation'=>'datetime:Y-m-d '
     ];
 
     /**
@@ -57,6 +58,22 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $appends = [
-        'profile_photo_url',
+        // 'profile_photo_url',
     ];
+
+    function postition_personel(){
+        return $this->belongsTo("position_personnels");
+    }
+
+    function unite(){
+        return $this->belongsTo(Unite::class);
+    }
+
+    function chef(){
+        return $this->hasOne(Chef::class);   
+    }
+
+    function element(){
+        return $this->hasOne(Element::class);
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\PositionPersonnel;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -25,10 +26,16 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'email_verified_at' => now(),
+            'nom' => $this->faker->name() . $this->faker->lastName(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'date_incorporation' => $this->faker->date(),
+            'login'=>$this->faker->unique()->name(),
+            'telephone'=>$this->faker->phoneNumber(),
+            'adresse'=>$this->faker->address(),
+            'sexe'=>['Homme','Femme'][random_int(0,1)],
+            'taille'=>$this->faker->randomFloat(2),
+            'position_personnel'=>PositionPersonnel::query()->get("id")->random(),
+            'matricule'=>$this->faker->uuid(),
             'remember_token' => Str::random(10),
         ];
     }

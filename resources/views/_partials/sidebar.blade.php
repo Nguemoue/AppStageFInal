@@ -17,12 +17,14 @@
         ];
     @endphp
     <div class="list-group list-group-flush">
-        @foreach ($links as $item)
+        @if (Auth::check())
+            @foreach ($links as $item)
             <x-navlink-component :icon="$item['icon']">{{ $item['title'] }}</x-navlink-component>
-        @endforeach
-        @if (!Auth::check())
-            <x-navlink-component link="{{ route('login') }}" icon="mdi-login">Se Connecter</x-navlink-component>
-        @endif
+            @endforeach
+            
+            @else
+            <x-navlink-component class="border mt-4" link="{{ route('login') }}" icon="mdi-login">Se Connecter</x-navlink-component>
+            @endif
     </div>
 </div>
 `

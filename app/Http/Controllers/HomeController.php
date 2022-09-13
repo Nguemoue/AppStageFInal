@@ -43,4 +43,19 @@ class HomeController extends Controller
 
     }
 
+    function home(){
+        return view("home");
+    }
+
+    function search(Request $request){
+        $data = $request->input("q");
+        $filter = $request->input("filter");
+        // j'effectue ma requetes
+        if($filter == null or $data == null){
+            return redirect()->back()->with('messages.info',"les donnes ne sont pas valide pour la recherche");
+        }
+        // je selectionne la ville
+
+    }
+
 }

@@ -30,6 +30,7 @@ return [
     */
 
     'passwords' => 'users',
+    // 'passwords'=>'personnels',
 
     /*
     |--------------------------------------------------------------------------
@@ -46,9 +47,9 @@ return [
     |
     */
 
-    'username' => 'email',
+    'username' => 'matricule',
 
-    'email' => 'email',
+    'email' => 'matricule',
 
     /*
     |--------------------------------------------------------------------------
@@ -140,7 +141,7 @@ return [
         Features::twoFactorAuthentication([
             'confirm' => true,
             'confirmPassword' => true,
-            // 'window' => 0,
+            'window' => 0,
         ]),
     ],
 
