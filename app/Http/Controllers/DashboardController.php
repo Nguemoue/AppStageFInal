@@ -6,8 +6,14 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+   function __construct()
+   {
+      $this->middleware("auth");
+   }
+
    function __invoke(Request $request){
-        return view('dashboard');
+      dd($request->user()->getPersonnel());
+      return view('dashboard');
    }
    
 }

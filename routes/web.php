@@ -46,8 +46,6 @@ Route::middleware([
 });
 Route::resource("chat",ChatController::class);
 
-Route::post("search/{filter?}",[HomeController::class,"search"])->name("search");
-
 
 Route::get('/test',function(){
     return view("test");

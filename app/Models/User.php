@@ -81,4 +81,8 @@ class User extends Authenticatable
     function getPersonnelName(){
         return $this->chef?"Chef":"Element";
     }
+
+    function getPersonnel(){
+        return $this->getPersonnelName() == "Chef"?$this->chef:$this->element;
+    }
 }

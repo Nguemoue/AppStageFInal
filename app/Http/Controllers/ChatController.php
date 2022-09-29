@@ -24,7 +24,7 @@ class ChatController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -35,8 +35,8 @@ class ChatController extends Controller
      */
     public function store(Request $request)
     {
-        SendLocation::dispatch("lucas");
-        // event(new SendLocation("lucas"));
+        dd($request);
+        event(new SendLocation("lucas"));
         return response()->json([
             "send"=>"yes"
         ]);

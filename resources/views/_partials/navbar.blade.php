@@ -6,8 +6,10 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
                 class="navbar-toggler-icon"></span></button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            
             <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+
                 <li class="nav-item dropdown">
                     <a class="mdi mdi-24px mdi-bell nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -15,7 +17,9 @@
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item d-flex justify-content-between" href="#!">
                             <span>Notifications</span>
-                            <span class="badge badge-pill bg-danger badge-info">{{ session()->get('notification',0) }}</span>
+                            @auth
+                                <span class="badge badge-pill bg-danger badge-info">{{ (auth()->user()->notifications->count()) }}</span>
+                            @endauth
                         </a>
                         <a class="dropdown-item btn btn-success d-flex justify-content-between" href="{{ route('chat.index') }}">
                             <span>Messages</span>

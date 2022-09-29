@@ -9,11 +9,11 @@ use Livewire\Component;
 class SearchElement extends Component
 {
     public $message = '';
-    stringpublic $q = '';
-    Stringpublic $filter = '';
+    public string  $q = '';
+    public String  $filter = '';
     public $data = null;
     public $isSearched = false;
-    stringpublic $entite = '';
+    public string  $entite = '';
     public function render()
     {
         return view('livewire.search-element', [
