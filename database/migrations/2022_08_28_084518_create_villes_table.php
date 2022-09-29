@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('villes', function (Blueprint $table) {
             $table->id();
             $table->string("libelle");
-            $table->string("code")->nullable();
+            $table->string("code1")->nullable();
+            $table->string("code2")->nullable();
             $table->text("description")->nullable();
             $table->timestamps();
         });

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="utf-8" />
+    <meta name="color-scheme" content="light dark"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
@@ -14,6 +15,9 @@
     <link rel="stylesheet" href="{{ asset('mdi/css/materialdesignicons.min.css') }}">
     @livewireStyles()
     <style>
+        :root{  
+            color-scheme:light dark;
+        }
          .accordion-item{
             box-shadow: 0 0 1px red !important;
         }

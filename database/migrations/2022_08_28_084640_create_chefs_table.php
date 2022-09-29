@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('chefs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("personnel_id")->constrained();
+            $table->foreignId("personnel_id")->unique()->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

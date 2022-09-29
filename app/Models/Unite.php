@@ -22,6 +22,10 @@ class Unite extends Model
         return $this->hasMany(Element::class);
     }
 
+    function nbPersonnels(){
+        return $this->elements->count();
+    }
+
     function materiels(){
         return $this->hasMany(Materiel::class);
     }

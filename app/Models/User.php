@@ -28,6 +28,7 @@ class User extends Authenticatable
      protected $fillable = [
         'nom',
         'password',
+        'matricule'
     ];
 
     /**
@@ -70,10 +71,14 @@ class User extends Authenticatable
     }
 
     function chef(){
-        return $this->hasOne(Chef::class);   
+        return $this->hasOne(Chef::class,"personnel_id");   
     }
 
     function element(){
-        return $this->hasOne(Element::class);
+        return $this->hasOne(Element::class,"personnel_id");
+    }
+
+    function getPersonnelName(){
+        return $this->chef?"Chef":"Element";
     }
 }

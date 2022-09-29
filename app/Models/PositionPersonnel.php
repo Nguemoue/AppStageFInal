@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class PositionPersonnel extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'intitule','date_debut','date_fin'
+    ];
 }

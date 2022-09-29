@@ -83,4 +83,39 @@
             </div>
         </div>
     </div>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {},
+            Tawk_LoadStart = new Date();
+        (function() {
+            var s1 = document.createElement("script"),
+                s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/6332bc5d37898912e96b82b7/1gdv59a36';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
 @endsection
+
+
+@push('styles')
+    <style>
+        :root {
+            font-family: "sans-serif";
+            font-family: cursive "Helvetica" !important;
+            font-size: .93em;
+        }
+
+        * {
+            outline: none !important;
+        }
+
+        img {
+            -webkit-box-reflect: below 0 linear-gradient(rgba(0, 0, 0, 0.2),
+                    rgba(0, 0, 0, .3));
+        }
+    </style>
+@endpush

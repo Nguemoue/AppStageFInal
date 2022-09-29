@@ -11,7 +11,7 @@ class SearchElement extends Component
     public $message = '';
     public string $q = '';
     public String $filter = '';
-    private $data = 0;
+    private $data = null;
     
     public function render()
     {
@@ -24,13 +24,13 @@ class SearchElement extends Component
         $attr = ["nom","adresse","telephone","sexe","date_incorporation"];
         if(Str::lower($this->filter) == "nom"){
             // je filtre selon la ville
-            $this->data = User::query()->where("nom","like","%{$this->q}%")->get($attr)->toArray();
+            $this->data = User::query()->where("nom","like","%{$this->q}%")->withExists(["element","chef"])->get($attr);
             $this->message = "utilisateur trouve";
             
         }else if(Str::lower($this->filter) == "telephone"){
-            $this->data = User::query()->where("telephone","like","%{$this->q}%")->get($attr)->toArray();
+            $this->data = User::query()->where("telephone","like","%{$this->q}%")->get($attr);
         }else if(Str::lower($this->filter) == "element"){
-            $this->data = User::query()->where("element","like","%{$this->q}%")->get($attr)->toArray();
+            $this->data = User::query()->where("element","like","%{$this->q}%")->get($attr);
         }else{
             $this->message = "aucun element ne corespond a votre recherche";
             $this->data = [];

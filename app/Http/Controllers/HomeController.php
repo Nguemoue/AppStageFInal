@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Authenticate;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\MessageBag;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 
 class HomeController extends Controller
@@ -13,8 +14,14 @@ class HomeController extends Controller
     //
     function __construct()
     {
-        
+    
     }
+
+    function index()
+    {
+        return view("index");
+    }
+
     function first_login(){
         
         return view("first_login");

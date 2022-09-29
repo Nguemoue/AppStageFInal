@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Chef extends Model
 {
     use HasFactory;
+
+    function unite(){
+        return $this->belongsTo(Unite::class);
+    }
 }

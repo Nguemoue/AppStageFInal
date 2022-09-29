@@ -17,7 +17,7 @@
             </nav>
         </div>
         <div class="card-body" style="background-color: transparent">
-            @dump($errors)
+            <x-auth-errors-component :errors="$errors" />
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="form-element" role="tabpanel"
                     aria-labelledby="formulaire de connexion en tant que element" tabindex="0">
@@ -56,16 +56,16 @@
                     tabindex="0">
                     <div class="card">
                         <div class="card-header border">
-                            <h4>Chef</h4>
+                            <h4>CHEF</h4>
                         </div>
                         <div class="card-body shadow border">
                             <form action="{{ route('login') }}" method="post" name="form-chef">
                                 @csrf
                                 <div class="mb-4">
-                                    <label for="matricule" class="form-label">Login <span
+                                    <label for="matricule" class="form-label">Matricule  <span
                                             class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="login"
-                                        placeholder="saisissez votre login">
+                                    <input type="text" class="form-control" name="matricule"
+                                        placeholder="Entrez votre matricule" onfocus="this.placeholder = ''" onblur="this.placeholder = 'entrez le matricule'">
                                 </div>
                                 <hr>
                                 <div class="mb-4">
@@ -74,8 +74,9 @@
                                     <input type="password" class="form-control" name="password"
                                         placeholder="entrez votre mot de passe...">
                                 </div>
+                                <input type="hidden" value="1" name="chef">
                                 <hr>
-                                <button class="btn btn-success">
+                                <button type='submit' class="btn btn-success">
                                     <span class="mdi mdi-send-circle"></span>
                                     login
                                 </button>

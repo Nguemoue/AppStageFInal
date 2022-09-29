@@ -6,6 +6,12 @@ use Faker\Factory;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
+Use App\Events\SendLocation;
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MaterielController;
+use App\Http\Controllers\UniteController;
+use App\Http\Controllers\PersonnelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +28,7 @@ Route::get("/flog", [HomeController::class, "first_login"])->name("first.login")
 
 Route::post("/flog",[HomeController::class,"store_flog"])->name("post.first.login");
 
-Route::get('/', function () {
-    return view("index");
-})->name("home");
+Route::get('/',[HomeController::class,"index"])->name("home");
 
 Route::get("/home",[HomeController::class,"home"])->name("index");
 
@@ -33,9 +37,19 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    
+    Route::get("/materiel",[MaterielController::class,"index"])->name("materiel.index");
+    Route::get("/elements",[PersonnelController::class,"index"])->name("element.index");
+    Route::get("/unite",[UniteController::class,"index"])->name("unite.index");
+    Route::get('/dashboard',DashboardController::class)->name('dashboard');
+    Route::resource("chat",ChatController::class);
+
 });
 
 Route::post("search/{filter?}",[HomeController::class,"search"])->name("search");
+
+
+Route::get('/test',function(){
+    SendLocation::dispatch('Someone');
+    return view("test");
+});

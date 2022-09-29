@@ -7,11 +7,18 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
+                'resources/js/test.js'
             ],
             refresh: [
                 ...refreshPaths,
-                'app/Http/Livewire/**',
+                'app/Http/Livewire/**'
             ],
         }),
+
     ],
+    resolve:{
+            alias:{
+                '@':'/resources/js'
+            }
+    }
 });

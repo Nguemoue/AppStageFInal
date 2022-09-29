@@ -44,7 +44,7 @@ return [
         ],
         'guard_basic'=>[
             'driver'=>'session',
-            'provider'=>'personnels'
+            'provider'=>'chef'
         ]
         
     ],
@@ -72,9 +72,9 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-        "personnels"=>[
+        "chef"=>[
             'driver'=>'database',
-            'model'=>'personnels',
+            'model'=>'chefs',
         ],
         // 'users' => [
         //     'driver' => 'database',

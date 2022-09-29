@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class PositionPersonnelFactory extends Factory
 {
+    protected $intitules = [
+        'chef','chef major','lieutnant','adjoint en chef','caporal'
+    ];
     /**
      * Define the model's default state.
      *
@@ -18,7 +21,7 @@ class PositionPersonnelFactory extends Factory
     {
         return [
             //
-            'intitule'=>$this->faker->titleMale(),
+            'intitule'=>$this->intitules[random_int(0,count($this->intitules)-1)],
             'date_debut'=>now()->subMonth(random_int(1,10)),
             'date_fin'=>now()->addYear(random_int(2,5))
             
