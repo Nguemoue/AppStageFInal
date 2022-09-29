@@ -42,14 +42,19 @@ Route::middleware([
     Route::get("/elements",[PersonnelController::class,"index"])->name("element.index");
     Route::get("/unite",[UniteController::class,"index"])->name("unite.index");
     Route::get('/dashboard',DashboardController::class)->name('dashboard');
-    Route::resource("chat",ChatController::class);
-
+    
 });
+Route::resource("chat",ChatController::class);
 
 Route::post("search/{filter?}",[HomeController::class,"search"])->name("search");
 
 
 Route::get('/test',function(){
-    SendLocation::dispatch('Someone');
     return view("test");
+});
+
+
+Route::get("/send",function(){
+    event(new SendLocation("lucas"));
+    return 'send message';
 });

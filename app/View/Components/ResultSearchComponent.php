@@ -6,15 +6,18 @@ use Illuminate\View\Component;
 
 class ResultSearchComponent extends Component
 {
-    public $datas;
+    public $type = null;
+    public $value = null;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($datas)
+    public function __construct($value , $type)
     {
-        $this->datas = $datas;
+        $this->value = $value;
+        $this->type= $type;
+        
     }
 
     /**

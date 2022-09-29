@@ -2,40 +2,64 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
-use App\Models\User;
+use Livewire\Component;
 
 class SearchElement extends Component
 {
     public $message = '';
-    public string $q = '';
-    public String $filter = '';
-    private $data = null;
-    
+    stringpublic $q = '';
+    Stringpublic $filter = '';
+    public $data = null;
+    public $isSearched = false;
+    stringpublic $entite = '';
     public function render()
     {
-        return view('livewire.search-element',[
-            'data'=>$this->data
+        return view('livewire.search-element', [
+            'data' => $this->data,
         ]);
-    }    
-    function search(){
-        $this->data = [];
-        $attr = ["nom","adresse","telephone","sexe","date_incorporation"];
-        if(Str::lower($this->filter) == "nom"){
+    }
+    public function search()
+    {
+        $this->reset("data");
+        // JE DEfinit mon tableau qui va contenir mes Element a recupere
+        $entiteArray = ['App\Models\User', 'App\Models\Unite'];
+        $selectedItemIndex = Str::lower($this->entite) == 'unite' ? 1 : 0;
+        $selectedItem = app($entiteArray[$selectedItemIndex]);
+        $queryTable = $selectedItem::query();
+        $attr = "*";
+        if (Str::lower($this->filter) == "nom") {
             // je filtre selon la ville
-            $this->data = User::query()->where("nom","like","%{$this->q}%")->withExists(["element","chef"])->get($attr);
+            if (Str::lower($this->entite) == "element") {
+                $this->data = $queryTable->where("nom", "like", "%{$this->q}%")->withExists(["element", "chef"])->get($attr);
+            } else {
+                $this->data = $queryTable->join('villes', 'ville_id', '=', 'villes.id')->get(['unites.*', 'villes.libelle']);
+            }
+
             $this->message = "utilisateur trouve";
-            
-        }else if(Str::lower($this->filter) == "telephone"){
-            $this->data = User::query()->where("telephone","like","%{$this->q}%")->get($attr);
-        }else if(Str::lower($this->filter) == "element"){
-            $this->data = User::query()->where("element","like","%{$this->q}%")->get($attr);
-        }else{
+
+        } else if (Str::lower($this->filter) == "telephone") {
+            $telephone = "telephone";
+            if (Str::lower($this->entite) == 'unite') {
+                $this->data = $queryTable->join('villes', 'ville_id', '=', 'villes.id')->get(['unites.*', 'villes.libelle']);
+            }
+
+            $this->data = $queryTable->where("$telephone", "like", "%{$this->q}%")->get($attr);
+        } else if (Str::lower($this->filter) == "adresse") {
+
+            if (Str::lower($this->entite) == 'unite') {
+                $this->data = $queryTable->join('villes', 'ville_id', '=', 'villes.id')->get(['unites.*', 'villes.libelle']);
+            }
+
+            $this->data = $queryTable->where('adresse', "like", "%{$this->q}%")->get($attr);
+
+        } else {
             $this->message = "aucun element ne corespond a votre recherche";
             $this->data = [];
         }
 
+        $this->isSearched = true;
     }
 
 }

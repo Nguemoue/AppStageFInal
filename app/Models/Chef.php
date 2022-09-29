@@ -12,4 +12,8 @@ class Chef extends Model
     function unite(){
         return $this->belongsTo(Unite::class);
     }
+
+    function personnel(){
+        return $this->belongsTo(User::class,'personnel_id');
+    }
 }

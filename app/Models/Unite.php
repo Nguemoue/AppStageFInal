@@ -19,7 +19,7 @@ class Unite extends Model
     }
 
     function elements(){
-        return $this->hasMany(Element::class);
+        return $this->hasMany(User::class,'personnels_id');
     }
 
     function nbPersonnels(){

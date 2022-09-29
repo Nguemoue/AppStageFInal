@@ -34,11 +34,11 @@ class SendLocation implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('status');
+        return new Channel('chat');
     }
 
     public function broadcastAs()
     {
-        return 'my-event';
+        return 'lire';
     }
 }
