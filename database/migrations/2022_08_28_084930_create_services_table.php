@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("nom");
             $table->text("consignes");
             $table->text("compte_rendu");
+            $table->foreignId("unite_id")->nullable()->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

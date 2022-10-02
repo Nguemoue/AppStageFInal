@@ -1,4 +1,4 @@
-@extends("admin_template")
+@extends("dashboard")
 
 
 @section("main")

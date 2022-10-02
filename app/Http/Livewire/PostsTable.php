@@ -32,7 +32,7 @@ class PostsTable extends Component
     public function render()
     {
         return view('livewire.posts-table',[
-            'users'=>User::where("name","like","%{$this->search}%")->paginate(7)
+            'users'=>User::query()->where("nom","like","%{$this->search}%")->paginate(7)
         ]);
     }
 }

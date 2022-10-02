@@ -11,7 +11,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Bus\Queueable;
 
-class User extends Authenticatable  
+class User extends Authenticatable
 {
     use HasApiTokens;
     use HasFactory;
@@ -62,8 +62,8 @@ class User extends Authenticatable
         // 'profile_photo_url',
     ];
 
-    function postition_personel(){
-        return $this->belongsTo("position_personnels");
+    function positionPersonnel(){
+        return $this->belongsTo(PositionPersonnel::class,"position_personnel");
     }
 
     function unite(){
@@ -71,7 +71,7 @@ class User extends Authenticatable
     }
 
     function chef(){
-        return $this->hasOne(Chef::class,"personnel_id");   
+        return $this->hasOne(Chef::class,"personnel_id");
     }
 
     function element(){
