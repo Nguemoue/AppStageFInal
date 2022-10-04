@@ -15,6 +15,9 @@
                 <x-navlink-component class="border mt-1 active" link="{{ route('dashboard') }}" icon="mdi-store">
                     Tableau de bord
                 </x-navlink-component>
+            <x-navlink-component class="border mt-1" link="{{ route('dashboard') }}" icon="mdi-shield-home">
+                Mon unite
+            </x-navlink-component>
                 {{-- si il est chef --}}
                 @if (auth()->user()->chef)
                     @includeIf('_partials.dashboard_sidebar.chef')
@@ -36,7 +39,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <h5 class="card-title text-center">Mes Informations</h5>
-                        <a href="#!" class="btn btn-danger">Exporter en PDF <span class="mdi mdi-file-pdf-box"></span></a>
+                        <a href="{{asset('shopify.pdf')}}" class="btn btn-danger">Exporter en PDF <span class="mdi mdi-file-pdf-box"></span></a>
                     </div>
                     <div class="card-body">
                         <ul class="list-group">
@@ -47,7 +50,7 @@
                                 Matricule: {{auth()->user()->matricule}}
                             </li>
                             <li class="list-group-item">
-                                Email: {{auth()->user()->email}}
+                                Type de L'unite: {{auth()->user()->unite->getTypeUniteName()}}
                             </li>
                             <li class="list-group-item">
                                 Grade: {{auth()->user()->grade}}

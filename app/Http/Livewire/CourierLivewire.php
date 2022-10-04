@@ -3,15 +3,23 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class CourierLivewire extends Component
 {
+    use WithFileUploads;
+    public $attachmentFile = null;
+    public $isShowBoxAttachment  = false;
     public $isSendable = false;
     public $listCourier = [];
 
     public function render()
     {
         return view('livewire.courier-livewire');
+    }
+
+    function updatedPhoto(){
+
     }
 
     function sendCourier(){
@@ -29,6 +37,17 @@ class CourierLivewire extends Component
         }
     }
 
+    function save(){
+
+    }
+    function hideBoxAttachment(){
+        if($this->isShowBoxAttachment == true)
+            $this->isShowBoxAttachment = false;
+    }
+    function showBoxAttachment(){
+        if($this->isShowBoxAttachment == false)
+            $this->isShowBoxAttachment = true;
+    }
     function mount(){
         // j'initialise mes traitements
     }

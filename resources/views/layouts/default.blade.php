@@ -14,7 +14,50 @@
     <link rel="stylesheet" href="{{ asset('mdi/css/materialdesignicons.min.css') }}">
     @livewireStyles()
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    <style>
+        ::-webkit-scrollbar{
+            width: 5px;
+            height: 5px;
+        }
+        ::-webkit-scrollbar-button{
+            width: 0px;
+            height: 0px;
+        }
+        ::-webkit-scrollbar-thumb{
+            background: #e1e1e1;
+            border: 31px none #fff;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover{
+            background: #a1a1a1;
+        }
+        ::-webkit-scrollbar-thumb:active{
+            background: #a3a3a3;
+        }
+        ::-webkit-scrollbar-track{
+            background: #f0f0f0;
+            border: 1px solid #fff;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-track:hover{
+            background: #f2f2f2;
+        }
+        ::-webkit-scrollbar-track:active{
+            background: #f5f5f5;
+        }
+        ::-webkit-scrollbar-corner{
+            background: transparent;
+        }
+        :root{
+            color-scheme:light dark;
+        }
+        .accordion-item{
+            box-shadow: 0 0 1px red !important;
+        }
+        body{
+            font-family: "Fira Code" !important;
+        }
+    </style>
     <style>
         :root{
 

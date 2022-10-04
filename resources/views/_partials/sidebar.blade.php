@@ -33,7 +33,7 @@
             <x-navlink-component link="{{ route('personnels.list') }}" icon='mdi mdi-account-multiple '>
                 Personnels
             </x-navlink-component>
-            <x-navlink-component class="border mt-1" link="{{ route('dashboard') }}" icon="mdi-cash-multiple">
+            <x-navlink-component class="border mt-1" link="{{ route('pretSecour.index') }}" icon="mdi-cash-multiple">
                 Pret Secours
             </x-navlink-component>
             {{-- je met le button de deconnexion --}}

@@ -13,14 +13,14 @@ class AuthenticateLoginAction
         $element = User::query()->where("matricule", $request->matricule)->first();
 
         if ($element && Hash::check($request->password, $element->password)) {
-            if ($chef = $element->chef) {
+            if ($chef = $element->chef and $request->exists("chef")) {
                 session()->put('chef', $chef);
-                session()->flash("success","Identification reussi ! vous etes connecter en tant que Element");
+                session()->flash("success","Identification reussi ! vous etes connecter en tant que Chef");
                 return $element;
 
             } else if ($el = $element->element) {
                 session()->put('element', $el);
-                session()->flash("success","Identification reussi ! vous etes connecter en tant que Chef");
+                session()->flash("success","Identification reussi ! vous etes connecter en tant que ELement");
 
                 return $element;
 
@@ -28,6 +28,6 @@ class AuthenticateLoginAction
                 return null;
             }
         }
-
+        return null;
     }
 }

@@ -32,7 +32,7 @@ class SearchElement extends Component
         if (Str::lower($this->filter) == "nom") {
             // je filtre selon la ville
             if (Str::lower($this->entite) == "element") {
-                $this->data = $queryTable->where("nom", "like", "%{$this->q}%")->withExists(["element", "chef"])->get($attr);
+                $this->data = $queryTable->where("nom", "like", "%{$this->q}%")->with(["element"])->get($attr);
             } else {
                 $this->data = $queryTable->join('villes', 'ville_id', '=', 'villes.id')->get(['unites.*', 'villes.libelle']);
             }
@@ -43,14 +43,17 @@ class SearchElement extends Component
             $telephone = "telephone";
             if (Str::lower($this->entite) == 'unite') {
                 $this->data = $queryTable->join('villes', 'ville_id', '=', 'villes.id')->get(['unites.*', 'villes.libelle']);
+            }else{
+                $this->data = $queryTable->where("$telephone", "like", "%{$this->q}%")->get($attr);
             }
-            $this->data = $queryTable->where("$telephone", "like", "%{$this->q}%")->get($attr);
         } else if (Str::lower($this->filter) == "adresse") {
             if (Str::lower($this->entite) == 'unite') {
-                $this->data = $queryTable->join('villes', 'ville_id', '=', 'villes.id')
+                $this->data = $queryTable->join('villes', 'unites.ville_id', '=', 'villes.id')
                     ->where("villes.libelle","like","%{$this->q}%")->get(['unites.*', 'villes.libelle']);
+            }else{
+
+                $this->data = $queryTable->where('adresse', "like", "%{$this->q}%")->get($attr);
             }
-            $this->data = $queryTable->where('adresse', "like", "%{$this->q}%")->get($attr);
 
         } else {
             $this->message = "aucun element ne corespond a votre recherche";

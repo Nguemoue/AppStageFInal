@@ -13,14 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('materiels', function (Blueprint $table) {
-            $table->id();
-            $table->string("etat");
-            $table->bigInteger("quantite");
+        Schema::table('materiels', function (Blueprint $table) {
             $table->foreignId("type_materiel")->nullable()->constrained()->nullOnDelete();
-            $table->foreignId("unite_id")->nullable()->constrained()->cascadeOnDelete();
-            $table->string("designation");
-            $table->timestamps();
         });
     }
 
@@ -31,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('materiels');
+        Schema::table('materiels', function (Blueprint $table) {
+            $table->dropConstrainedForeignId();
+        });
     }
 };

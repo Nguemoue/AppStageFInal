@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Chef;
+use App\Models\Element;
 use App\Models\Unite;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -19,7 +21,10 @@ class ElementFactory extends Factory
     public function definition()
     {
         return [
-            'personnel_id'=>User::query()->whereRaw("id not in (select personnel_id from chefs) ")->get("id")->random(),
+
+            'personnel_id'=>User::query()->
+                    whereRaw("id not in (select personnel_id from elements) and id not in  (select personnel_id from chefs) ")
+                ->get("id")->random(),
             "unite_id"=>Unite::query()->get("id")->random()
         ];
     }

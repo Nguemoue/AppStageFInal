@@ -14,7 +14,7 @@ class HomeController extends Controller
     //
     function __construct()
     {
-    
+
     }
 
     function index()
@@ -23,12 +23,12 @@ class HomeController extends Controller
     }
 
     function first_login(){
-        
+
         return view("first_login");
     }
 
     function store_flog(Request $request){
-        
+
         $request->validate([
             "login"=>"required|min:4",
             "password"=>["required",Password::defaults()->letters()->min(8)]
@@ -50,7 +50,9 @@ class HomeController extends Controller
 
     }
 
+
     function home(){
+        return redirect()->route("home")->with("warning","access non  accorde");
         return view("home");
     }
 
@@ -66,3 +68,4 @@ class HomeController extends Controller
     }
 
 }
+

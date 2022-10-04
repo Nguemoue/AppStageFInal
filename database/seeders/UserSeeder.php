@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Element;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ElementSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class ElementSeeder extends Seeder
      */
     public function run()
     {
-        Element::factory(10)->create();
+        User::factory(20)->create();
     }
 }

@@ -45,7 +45,7 @@ Route::middleware([
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
     Route::resource("garde_vue", \App\Http\Controllers\GardeVueController::class);
     Route::resource("service",\App\Http\Controllers\ServiceController::class);
-
+    Route::get("/pret-secour",\App\Http\Livewire\PretSecourLivewire::class)->name("pretSecour.index");
     Route::group([
         "prefix"=>"dashboard/",
     ],function (){
@@ -54,7 +54,12 @@ Route::middleware([
         Route::get("/courier",\App\Http\Livewire\CourierLivewire::class)->name("courier.index");
     }) ;
 });
+Route::get("/send-mail",function (){
 
+    Mail::to("lucchuala@gmail.com")->send(new \App\Mail\SendTextEmail());
+    Mail::to("noudemnadia@gmail.com")->send(new \App\Mail\SendTextEmail());
+
+});
 Route::get('/d',function(){
    return redirect()->route("test")->with('success',"Bienvenue sur notre page web");
 });

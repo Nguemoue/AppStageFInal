@@ -13,4 +13,11 @@ class Element extends Model
         return $this->belongsTo(Unite::class);
     }
 
+    function messages(){
+        return $this->hasMany(Message::class);
+    }
+    function personnel(){
+        return $this->belongsTo(User::class,"personnel_id");
+    }
+
 }

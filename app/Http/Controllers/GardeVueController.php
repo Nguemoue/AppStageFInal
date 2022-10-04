@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GardeVue;
 use Illuminate\Http\Request;
 
 class GardeVueController extends Controller
@@ -13,7 +14,9 @@ class GardeVueController extends Controller
      */
     public function index()
     {
-        //
+        $unite_id = auth()->user()->getPersonnel()->unite_id;
+        $gardeVues = GardeVue::query()->where("unite_id","=",$unite_id)->paginate(4);
+        return view("gardevue.index",compact("gardeVues"));
     }
 
     /**

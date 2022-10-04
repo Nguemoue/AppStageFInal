@@ -59,16 +59,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $appends = [
-        // 'profile_photo_url',
+         'profile_photo_url',
     ];
 
     function positionPersonnel(){
         return $this->belongsTo(PositionPersonnel::class,"position_personnel");
     }
 
-    function unite(){
-        return $this->belongsTo(Unite::class);
-    }
 
     function chef(){
         return $this->hasOne(Chef::class,"personnel_id");

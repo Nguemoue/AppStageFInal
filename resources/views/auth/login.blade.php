@@ -29,20 +29,20 @@
                             <form name="form-element" action="{{ route('login') }}" method="POST">
                                 @csrf
                                 <div class="mb-4">
-                                    <label for="matricule" class="form-label">Matricule <span
+                                    <label for="matriculeElement" class="form-label">Matricule <span
                                             class="text-danger">*</span></label>
-                                    <input type="text" class="border p-2  form-control" name="matricule"
-                                        placeholder="saisissez votre matricule">
+                                    <input type="text" id="matriculeElement" class="border p-2  form-control" name="matricule"
+                                        placeholder="saisissez votre matricule"/>
                                 </div>
                                 <hr>
                                 <div class="mb-4">
-                                    <label for="password" class="form-label">Mot de Passe <span
+                                    <label for="passwordElement" class="form-label">Mot de Passe <span
                                             class="text-danger">*</span></label>
-                                    <input type="password" class="border p-2 form-control" name="password"
-                                        placeholder="entrez votre mot de passe...">
+                                    <input type="password" id="passwordElement" class="border p-2 form-control" name="password"
+                                        placeholder="Tapez votre mot de passe..."/>
                                 </div>
                                 <hr>
-                                <button class="btn btn-success">
+                                <button type="submit" class="btn btn-success">
                                     <span class="mdi mdi-send"></span>
                                     Connexion
                                 </button>
@@ -64,17 +64,17 @@
                                 <div class="mb-4">
                                     <label for="matricule" class="form-label">Matricule  <span
                                             class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="matricule"
+                                    <input type="text" class="form-control" id="matricule" name="matricule"
                                         placeholder="Entrez votre matricule" onfocus="this.placeholder = ''" onblur="this.placeholder = 'entrez le matricule'">
                                 </div>
                                 <hr>
                                 <div class="mb-4">
                                     <label for="password" class="form-label">Mot de Passe <span
                                             class="text-danger">*</span></label>
-                                    <input type="password" class="form-control" name="password"
+                                    <input type="password" id="password" class="form-control" name="password"
                                         placeholder="entrez votre mot de passe...">
                                 </div>
-                                <input type="hidden" value="1" name="chef">
+                                <input type="hidden" value="chef" name="chef">
                                 <hr>
                                 <button type='submit' class="btn btn-success">
                                     <span class="mdi mdi-send-circle"></span>

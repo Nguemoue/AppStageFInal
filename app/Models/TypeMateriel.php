@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class TypeMateriel extends Model
 {
     use HasFactory;
+
+    function materiel(){
+        return $this->hasOne(Materiel::class);
+    }
+
 }

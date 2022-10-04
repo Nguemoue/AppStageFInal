@@ -20,7 +20,7 @@
             </div>
             <div class="card-body">
                 <div class="card-text">
-                    <form action="" method="post">
+                    <form action="" method="post" wire:submit.prevent="save">
                         @csrf
                         <div class="mb-2">
                             <label for="nom">Intitule</label>
@@ -30,6 +30,28 @@
                             <label for="content" >Intitule</label>
                             <input type="text" placeholder="contenue"  id="content" class="form-control">
                         </div>
+                        @if($isShowBoxAttachment)
+                            <div class="card mb-3">
+                                <div class="card-header">Fichier a joinder</div>
+                                <div class="card-body">
+                                    <div class="mb-2" >
+                                        <input type="file" wire:model.defer="attachmentFile" class="form-control" placeholder="choisir le fichier a attacher">
+                                    </div>
+                                    <button class="btn btn-danger" wire:click="hideBoxAttachment" type="submit">
+                                        <span class="mdi mdi-close"></span>
+                                        Retirer le fichier
+                                    </button>
+                                </div>
+                            </div>
+                        @endif
+                        <button class="btn btn-success"   wire:click="showBoxAttachment" type="submit">
+                            <span class="mdi mdi-attachment"></span>
+                            Attacher un fichier
+                        </button>
+                        <button class="btn btn-info">
+                            <span class="mdi mdi-send"></span>
+                            Envoyer Le courier
+                        </button>
                     </form>
                 </div>
             </div>

@@ -3,18 +3,27 @@
 
 @section("main")
     <h4 class="my-2 text-center">Les Materiels Affectees a l'unite</h4>
-    <div class="card mx-4">
-        <div class="card-header"><h6>Statistiques sur le  materiels</h6></div>
-        <div class="card-body d-flex">
-            <div class="card w-25 p-4 mx-2">
-                Nombres de Materiels Total:
-                <strong>{{ $materiels?$materiels->count():0 }}</strong>
-            </div>
-            <div class="card w-25 p-4 mx-2">
-                Nombres de Materiels Ajouter pendant les 6 derniers mois
-                <strong>{{ $materiels?$materiels->count():0 }}</strong>
-            </div>
-        </div>
+    <hr class="mx-2">
+    <div class="row">
+        @foreach($allMateriels as $materiel)
+            <div class="col-6 my-2" >
+                <div class="container">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between">
+                            <h4 class="card-title">{{ $materiel->nom  }}</h4>
 
+                        </div>
+                        <div class="card-body ">
+                            <div class="card-text d-flex justify-content-around align-items-baseline">
+                                <span class="{{ IconProvider::getIcon($materiel->nom)  }} mdi-48px"></span>
+                                <span class="h4"> {{$materiel->nb}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </div>
+    <hr>
+    <br>
 @endsection

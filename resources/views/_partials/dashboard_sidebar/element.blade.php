@@ -1,4 +1,4 @@
-<x-navlink-component link="{{ route('login') }}" icon='mdi mdi-account-tie '>
+<x-navlink-component link="{{ url('user/profile') }}" icon='mdi mdi-account-tie '>
     Mon Compte
 </x-navlink-component>
 
